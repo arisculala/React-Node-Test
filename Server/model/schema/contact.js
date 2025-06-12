@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const fetchSchemaFields = async () => {
     const CustomFieldModel = mongoose.model('CustomField');
-    return await CustomFieldModel.find({ moduleName: "Contacts" });
+    return await CustomFieldModel.find({ moduleName: 'Contacts' });
 };
 
 const contactSchema = new mongoose.Schema({
     // 1. Basic Information
-    // firstName: String,
-    // lastName: String,
-    // title: String,
+    firstName: String,
+    lastName: String,
+    title: String,
     // email: String,
     // phoneNumber: Number,
     // mobileNumber: Number,
@@ -25,14 +25,18 @@ const contactSchema = new mongoose.Schema({
     // leadRating: Number,
     // leadConversionProbability: String,
     // // 4. Property of Interest
-    interestProperty: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Properties',
-    }],
-    quotes: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Quotes',
-    }],
+    interestProperty: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Properties',
+        },
+    ],
+    quotes: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Quotes',
+        },
+    ],
     // // 5. History:
     // notesandComments: String,
     // // 6. Tags or Categories
@@ -60,11 +64,11 @@ const contactSchema = new mongoose.Schema({
     createBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     },
     updatedDate: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     createdDate: {
         type: Date,

@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const fetchSchemaFields = async () => {
     const CustomFieldModel = mongoose.model('CustomField');
-    return await CustomFieldModel.find({ moduleName: "Leads" });
+    return await CustomFieldModel.find({ moduleName: 'Leads' });
 };
 
 const leadSchema = new mongoose.Schema({
     // // Lead Information:
-    // leadName: String,
-    // leadEmail: String,
+    leadName: String,
+    leadEmail: String,
     // leadPhoneNumber: String,
     // leadAddress: String,
     // // Lead Source and Details:
@@ -45,7 +45,7 @@ const leadSchema = new mongoose.Schema({
     },
     updatedDate: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     createdDate: {
         type: Date,
@@ -53,7 +53,7 @@ const leadSchema = new mongoose.Schema({
     createBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     },
 });
 

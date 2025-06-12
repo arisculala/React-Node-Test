@@ -5,7 +5,7 @@ const user = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
@@ -18,14 +18,16 @@ const user = new mongoose.Schema({
     phoneNumber: { type: Number },
     firstName: String,
     lastName: String,
-    roles: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'RoleAccess',
-        required: true
-    }],
+    roles: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'RoleAccess',
+            required: true,
+        },
+    ],
     updatedDate: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     createdDate: {
         type: Date,
@@ -34,6 +36,6 @@ const user = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-})
+});
 
-module.exports = mongoose.model('User', user, 'User')
+module.exports = mongoose.model('User', user, 'User');
